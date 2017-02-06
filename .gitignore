@@ -1,0 +1,14 @@
+elpa
+anaconda-mode
+auto-save-list
+emojis
+recentf
+
+
+# mac finder indexes
+.DS_Store
+
+# recent
+ido.last
+*.*~
+.cache
