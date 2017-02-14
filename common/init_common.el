@@ -28,17 +28,6 @@
  '(mode-line ((t (:foreground "#030303" :background "#bdbdbd" :box nil))))
  '(mode-line-inactive ((t (:foreground "#f9f9f9" :background "#666666" :box nil)))))
 
-;; (set-face-attribute 'mode-line nil
-;;                     :foreground "Black"
-;;                     :background "DarkOrange"
-;;                     :box nil)
-
-;; (set-face-attribute 'mode-line-inactive nil
-;;                     :background "grey22"
-;;                     :box nil)
-
-
-
 ;;settings
 (setenv "LC_CTYPE" "UTF-8")
 (setenv "LC_ALL" "en_US.UTF-8")
@@ -54,12 +43,6 @@
 (setq make-save-list-file-name nil)
 (setq auto-save-default        nil)
 
-;;(hc-toggle-highlight-tabs)
-;; packages
-
-;;(require 'ethan-wspace)
-;;(global-ethan-wspace-mode 1)
-
 (setq whitespace-style (quote (spaces tabs newline space-mark tab-mark newline-mark)))
 (setq whitespace-display-mappings
       '(
@@ -67,6 +50,7 @@
 	(newline-mark 10 [182] [10])
 	(tab-mark 9 [9655 9] [92 9])
 	))
+
 (require 'blank-mode)
 (global-blank-mode 0)
 
@@ -88,9 +72,6 @@
 (require 'bs)
 (setq bs-configurations
       '(("files" "^\\*scratch\\*" nil nil bs-visits-non-file bs-sort-buffer-interns-are-last)))
-
-;;(require 'expand-region)
-;;(global-set-key (kbd "C-=") 'er/expand-region)
 
 (global-set-key [f2] 'bs-show)
 
@@ -137,7 +118,6 @@
 ;; optional key binding
 (global-set-key "\C-c\C-k" 'copy-line)
 
-
 ;; scala language
 (require 'scala-mode)
 (global-set-key (kbd "<f8>")
@@ -145,18 +125,10 @@
                   (interactive)
                   (dired "")))
 
-;; (setq insert-directory-program "/usr/local/bin/gls")
-;; (setq dired-listing-switches "-aBhl --group-directories-first")
-
 (require 'neotree)
-(global-set-key (kbd "<f12>") 'neotree-toggle)
+(global-set-key (kbd "C-x \\") 'neotree-toggle)
+(setq neo-theme (if (display-graphic-p) 'icons 'arrow))
 
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
 
 ;; orgmode set up
 (require 'org-install)
@@ -192,4 +164,5 @@
 (require 'dired-k)
 (define-key dired-mode-map (kbd "K") 'dired-k)
 
+;; line highlite
 (global-hl-line-mode 1)
