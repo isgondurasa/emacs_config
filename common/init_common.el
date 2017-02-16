@@ -1,37 +1,8 @@
-(require 'powerline) 
-(powerline-center-theme)
-(setq powerline-arrow-shape 'curve)
-(add-to-list 'load-path "~/.emacs.d/modules/emacs-powerline")
-
-;;(custom-set-faces
-;; '(mode-line ((t (:foreground "#030303" :background "#bdbdbd" :box nil))))
-;; '(mode-line-inactive ((t (:foreground "#f9f9f9" :background "#666666" :box nil)))))
-
-;; (setq powerline-color1 "#073642")
-;; (setq powerline-color2 "#abb7ba")
-;; ;;(setq powerline-color2 "#002b36")
-
-(set-face-attribute 'mode-line nil
-                    :foreground "Black"
-                    :background "DarkOrange"
-                    :box nil)
-
-(set-face-attribute 'mode-line-inactive nil
-                    :background "Blue"
-                    :box nil)
-
-
-(setq powerline-color1 "grey22")
-(setq powerline-color2 "grey40")
-
-(custom-set-faces
- '(mode-line ((t (:foreground "#030303" :background "#bdbdbd" :box nil))))
- '(mode-line-inactive ((t (:foreground "#f9f9f9" :background "#666666" :box nil)))))
-
 ;;settings
 (setenv "LC_CTYPE" "UTF-8")
 (setenv "LC_ALL" "en_US.UTF-8")
 (setenv "LANG" "en_US.UTF-8")
+
 
 (setq show-paren-style 'expression)
 (show-paren-mode 2)
@@ -159,10 +130,15 @@
 
 ;; tramp mode
 (setq tramp-default-method "ssh")
-(provide 'init_common)
+
 
 (require 'dired-k)
 (define-key dired-mode-map (kbd "K") 'dired-k)
 
 ;; line highlite
 (global-hl-line-mode 1)
+
+;; ace
+(require 'ace-isearch)
+(global-ace-isearch-mode +1)
+(provide 'init_common)
