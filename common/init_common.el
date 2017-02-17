@@ -131,10 +131,6 @@
 ;; tramp mode
 (setq tramp-default-method "ssh")
 
-
-(require 'dired-k)
-(define-key dired-mode-map (kbd "K") 'dired-k)
-
 ;; line highlite
 (global-hl-line-mode 1)
 

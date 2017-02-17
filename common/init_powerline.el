@@ -20,4 +20,5 @@
                     :background "Green"
                     :box nil)
 
+(pomodoro-add-to-mode-line)
 (provide 'init_powerline)

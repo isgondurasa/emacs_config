@@ -116,6 +116,7 @@
  '(package-selected-packages
    (quote
     (pomodoro spaceline ace-isearch yasnippet yalinum sublime-themes solarized-theme scala-mode pyvenv python-mode python-docstring pyimport pyflakes powerline neotree multiple-cursors magit json-mode json ht hl-line+ helm-projectile helm-ls-git helm-git git-gutter fuzzy flycheck emoji-display dired-k company-jedi company-anaconda color-theme-emacs-revert-theme color-theme blank-mode autopair auto-complete)))
+ '(pomodoro-show-number t)
  '(pos-tip-background-color "#eee8d5")
  '(pos-tip-foreground-color "#586e75")
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#eee8d5" 0.2))
