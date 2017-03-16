@@ -17,7 +17,7 @@
                     
 (set-face-attribute 'powerline-active2 nil
                     :foreground "Black"
-                    :background "Green"
+                    :background "grey22"
                     :box nil)
 
 (provide 'init_powerline)

@@ -33,8 +33,11 @@
 (global-set-key (kbd "C->") 'ace-jump-mode)
 
 (require 'yalinum)
-(setq yalinum-format "%4d  ")
+(setq yalinum-format "%4d  |")
 (global-yalinum-mode t)
+(set-face-attribute 'yalinum-face nil
+                    :foreground "Black"
+                    :background "DarkOrange")
 
 (require 'ido)
 (ido-mode t)
@@ -56,7 +59,6 @@
 (autopair-global-mode)
 
 (global-font-lock-mode 1)
-
 
 (global-auto-revert-mode t)
 
@@ -135,6 +137,6 @@
 (global-hl-line-mode 1)
 
 ;; ace
-(require 'ace-isearch)
-(global-ace-isearch-mode +1)
+;;(require 'ace-isearch)
+;;(global-ace-isearch-mode +1)
 (provide 'init_common)
