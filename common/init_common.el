@@ -8,7 +8,7 @@
 (show-paren-mode 2)
 
 (menu-bar-mode -1)
-(tool-bar-mode -1)
+;;(tool-bar-mode -1)
 
 (setq make-backup-files        nil)
 (setq make-save-list-file-name nil)
@@ -134,7 +134,7 @@
 (setq tramp-default-method "ssh")
 
 ;; line highlite
-(global-hl-line-mode 1)
+;;(global-hl-line-mode 1)
 
 ;; ace
 ;;(require 'ace-isearch)

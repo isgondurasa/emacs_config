@@ -1,0 +1,7 @@
+[MESSAGES CONTROL]
+
+disable=C0111,E273,W0141,W0142,R0911,R0903,W0108,R0912,R0914,W0110,W0511,W0123,F0401,R0913,W0212,C0103,R0904,R0201,W1202
+
+
+[TYPECHECK]
+generated-members=objects,_meta,id,delay,DoesNotExist,MultipleObjectsReturned
