@@ -13,6 +13,7 @@
 
 (defvar my-packages '(autopair
                       ace-isearch
+                      discover
                       yasnippet
                       auto-complete
                       fuzzy
@@ -26,7 +27,6 @@
 		      linum
 		      ido
 		      bs
-		      scala-mode
 		      neotree
 		      multiple-cursors
                       anaconda-mode
@@ -44,6 +44,8 @@
                       spaceline
                       emojify
                       direx
+                      magit
+                      org-bullets
                       )
 "install packages")
 

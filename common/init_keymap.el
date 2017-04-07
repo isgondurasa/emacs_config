@@ -9,6 +9,9 @@
 (global-set-key (kbd "C-c /") 'comment-or-uncomment-region)
 ;; git annotate
 (global-set-key (kbd "C-C \\") 'vc-annotate)
+;; magit
+(global-set-key (kbd "C-x g") 'magit-status)
+(global-set-key (kbd "C-x M-g") 'magit-dispatch-popup)
 ;; optional key binding
 (global-set-key "\C-c\C-k" 'copy-line)
 ;;neotree
