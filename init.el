@@ -42,7 +42,8 @@
                       solarized-theme
 		      sublime-themes
                       spaceline
-                      pomodoro
+                      emojify
+                      direx
                       )
 "install packages")
 
@@ -64,5 +65,7 @@
 (require 'init_python)
 (require 'init_company)
 (require 'init_powerline)
+(require 'init_orgmode)
+(require 'init_keymap)
 
 (load-theme 'dracula t)
