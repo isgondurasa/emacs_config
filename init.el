@@ -3,6 +3,8 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 
+(add-to-list 'package-archives '("elpy" . "https://jorgenschaefer.github.io/packages/"))
+
 (when (< emacs-major-version 24)
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 
@@ -18,6 +20,7 @@
                       auto-complete
                       fuzzy
 		      cl
+                      elpy
 		      git-gutter
 		      helm
 		      helm-projectile
@@ -44,8 +47,11 @@
                       spaceline
                       emojify
                       direx
+                      ranger
                       magit
                       org-bullets
+                      vimish-fold
+                      switch-window
                       )
 "install packages")
 
@@ -60,7 +66,7 @@
 
 (add-to-list 'load-path "~/.emacs.d/modules")
 (add-to-list 'load-path "~/.emacs.d/common")
-;;(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+
 
 (require 'init_common)
 (require 'init_helm)
@@ -71,3 +77,15 @@
 (require 'init_keymap)
 
 (load-theme 'dracula t)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(pyvenv-activate ~/\.envs/boxcomtools))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:background nil)))))
