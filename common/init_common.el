@@ -73,6 +73,10 @@
 ;;(require 'direx)
 (require 'ranger)
 (ranger-override-dired-mode t)
+(setq ranger-cleanup-on-disable t)
+(setq ranger-modify-header t)
+(setq ranger-parent-depth 2)
+
 
 (require 'switch-window)
 (global-set-key (kbd "C-x o") 'switch-window)

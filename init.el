@@ -67,7 +67,6 @@
 (add-to-list 'load-path "~/.emacs.d/modules")
 (add-to-list 'load-path "~/.emacs.d/common")
 
-
 (require 'init_common)
 (require 'init_helm)
 (require 'init_python)
