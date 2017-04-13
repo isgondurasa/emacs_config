@@ -81,6 +81,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (switch-window vimish-fold ranger elpy yasnippet yalinum xpm tramp-term telephone-line sublime-themes spaceline solarized-theme scala-mode pyvenv python-mode python-docstring pyimport pomodoro org-bullets neotree multiple-cursors mode-icons magit helm-projectile helm-ls-git git-timemachine git-gutter fuzzy flycheck emojify dracula-theme discover direx company-jedi company-anaconda color-theme blank-mode autopair auto-complete all-the-icons ace-isearch)))
  '(pyvenv-activate ~/\.envs/boxcomtools))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
