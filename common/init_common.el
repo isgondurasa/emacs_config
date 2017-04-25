@@ -62,23 +62,48 @@
 ;; aoutopair
 (require 'autopair)
 (autopair-global-mode)
-
 (global-font-lock-mode 1)
 (global-auto-revert-mode t)
 (setq-default indent-tabs-mode nil)
 
 ;; emojify
 (add-hook 'after-init-hook #'global-emojify-mode)
-;;direx
-;;(require 'direx)
-(require 'ranger)
-(ranger-override-dired-mode t)
-(setq ranger-cleanup-on-disable t)
-(setq ranger-modify-header t)
-(setq ranger-parent-depth 2)
-
+;; direx
+(require 'direx)
 
 (require 'switch-window)
 (global-set-key (kbd "C-x o") 'switch-window)
+
+;; custom functions
+(defun copy-line (&optional arg)
+      "Do a kill-line but copy rather than kill.  This function directly calls
+    kill-line, so see documentation of kill-line for how to use it including prefix
+    argument and relevant variables.  This function works by temporarily making the
+    buffer read-only."
+      (interactive "P")
+      (let ((buffer-read-only t)
+            (kill-read-only-ok t))
+        (kill-line arg)))
+;;neotree 
+;; (require 'neotree)
+;; (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+;; emojify
+(add-hook 'after-init-hook #'global-emojify-mode)
+;;direx
+(require 'direx)
+(global-set-key (kbd "C-x C-j") 'direx:jump-to-directory)
+;; mode-icons
+
+(mode-icons-mode)
+;;(setq mode-icons-change-mode-name nil)
+;;(setq mode-icons-desaturate-active t)
+
+
+;; projectile
+(require 'projectile)
+(projectile-global-mode)
+(setq projectile-completion-system 'helm)
+(helm-projectile-on)
+
 
 (provide 'init_common)

@@ -45,13 +45,18 @@
                       solarized-theme
 		      sublime-themes
                       spaceline
+                      telephone-line
                       emojify
                       direx
-                      ranger
                       magit
                       org-bullets
                       vimish-fold
                       switch-window
+		      git-gutter
+                      git-timemachine
+                      magit
+                      org-bullets
+                      mode-icons
                       )
 "install packages")
 
@@ -59,23 +64,24 @@
   (when (not (package-installed-p p))
     (package-install p)))
 
-(add-to-list 'load-path "~/.emacs.d/modules")
-
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(add-to-list 'load-path "~/.emacs.d/modules")
+(load-theme 'tsdh-light t)
+
+;;(add-to-list 'load-path "~/.emacs.d/modules")
 (add-to-list 'load-path "~/.emacs.d/common")
 
 (require 'init_common)
 (require 'init_helm)
 (require 'init_python)
 (require 'init_company)
+;;(require 'init_telephoneline)
 (require 'init_powerline)
 (require 'init_orgmode)
 (require 'init_keymap)
 
-(load-theme 'dracula t)
+(load-theme 'adwaita)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -83,8 +89,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (switch-window vimish-fold ranger elpy yasnippet yalinum xpm tramp-term telephone-line sublime-themes spaceline solarized-theme scala-mode pyvenv python-mode python-docstring pyimport pomodoro org-bullets neotree multiple-cursors mode-icons magit helm-projectile helm-ls-git git-timemachine git-gutter fuzzy flycheck emojify dracula-theme discover direx company-jedi company-anaconda color-theme blank-mode autopair auto-complete all-the-icons ace-isearch)))
- '(pyvenv-activate ~/\.envs/boxcomtools))
+    (importmagic yalinum xpm vimish-fold tramp-term telephone-line switch-window sublime-themes spaceline solarized-theme scala-mode ranger python-mode python-docstring pyimport pomodoro org-bullets neotree multiple-cursors mode-icons magit ipython helm-projectile helm-ls-git git-timemachine git-gutter fuzzy flycheck emojify elpy dracula-theme discover direx company-jedi company-anaconda color-theme blank-mode autopair auto-complete all-the-icons ace-isearch))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

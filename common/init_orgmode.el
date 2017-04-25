@@ -17,7 +17,7 @@
            '(("TODO" . org-warning) ("STARTED" . "yellow")
              ("CANCELED" . (:foreground "blue" :weight bold))))
 
-(setq org-tag-alist '(("@progress" . ?p)
+(setq org-tag-alist '(("@sberned" . ?s)
                       ("@algorithms" . ?a)
                       ("@family" . ?f)
                       ("@pratice" . ?r)
