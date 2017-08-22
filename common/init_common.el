@@ -26,6 +26,11 @@
                    ("h" "highlighters ..." makey-key-mode-popup-isearch-highlight))))
   :bind "M-s")
 
+;; yaml-mode hook
+(add-hook 'yaml-mode-hook
+        (lambda ()
+            (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
+
 
 (setq show-paren-style 'expression)
 (show-paren-mode 2)
@@ -105,5 +110,20 @@
 (setq projectile-completion-system 'helm)
 (helm-projectile-on)
 
+
+(defun set-exec-path-from-shell-PATH ()
+  (let ((path-from-shell (replace-regexp-in-string
+                          "[ \t\n]*$"
+                          ""
+                          (shell-command-to-string "$SHELL --login -i -c 'echo $PATH'"))))
+    (setenv "PATH" path-from-shell)
+    (setq eshell-path-env path-from-shell) ; for eshell users
+    (setq exec-path (split-string path-from-shell path-separator))))
+
+(when window-system (set-exec-path-from-shell-PATH))
+(setenv "GOPATH" "/Users/aosviridov/projects/golang_projects")
+
+(add-to-list 'exec-path "/Users/aosviridov/projects/golang_projects/bin")
+(add-hook 'before-save-hook 'gofmt-before-save)
 
 (provide 'init_common)
