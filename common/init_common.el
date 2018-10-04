@@ -89,6 +89,7 @@
       (let ((buffer-read-only t)
             (kill-read-only-ok t))
         (kill-line arg)))
+
 ;;neotree 
 ;; (require 'neotree)
 ;; (setq neo-theme (if (display-graphic-p) 'icons 'arrow))

@@ -1,29 +1,7 @@
 ;; multiple cursors
 (require 'multiple-cursors)
-(global-set-key (kbd "C-c l") 'mc/edit-lines)
-(global-set-key (kbd "C-c .") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-c ,") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-c m") 'mc/mark-all-like-this)
 
-;; comment/uncomment
-(global-set-key (kbd "C-c /") 'comment-or-uncomment-region)
-;; git annotate
-(global-set-key (kbd "C-C \\") 'vc-annotate)
-;; magit
-(global-set-key (kbd "C-x g") 'magit-status)
-(global-set-key (kbd "C-x M-g") 'magit-dispatch-popup)
-
-;; optional key binding
-;; (defun copy-line (&optional arg)
-;;       "Do a kill-line but copy rather than kill.  This function directly calls
-;;     kill-line, so see documentation of kill-line for how to use it including prefix
-;;     argument and relevant variables.  This function works by temporarily making the
-;;     buffer read-only."
-;;       (interactive "P")
-;;       (let ((buffer-read-only t)
-;;             (kill-read-only-ok t))
-;;         (kill-line arg)))
-
+;; functions
 (defun copy-line (arg)
   "Copy line function"
   (interactive "p")
@@ -31,36 +9,23 @@
                   (line-beginning-position (+ 1 arg)))
   (message "%d line%s copied" arg (if (= 1 arg) "" "s")))
 
-(global-set-key "\C-c\C-k" 'copy-line)
-;;neotree
-(global-set-key (kbd "C-x \\") 'neotree-toggle)
-;;bs 
-(global-set-key [f2] 'bs-show)
-;;direx
-;;(global-set-key (kbd "C-x C-j") 'direx:jump-to-directory)
-;;vimish mode
-(global-set-key (kbd "C-x v f") #'vimish-fold)
-(global-set-key (kbd "C-x v v") #'vimish-fold-delete)
-
 (defun pbcopy ()
   (interactive)
   (call-process-region (point) (mark) "pbcopy")
-  (setq deactivate-mark t))
+  (setq deactivate-mark t)
+  (message "copied to buffer"))
 
 (defun pbpaste ()
   (interactive)
-  (call-process-region (point) (if mark-active (mark) (point)) "pbpaste" t t))
+  (call-process-region (point) (if mark-active (mark) (point)) "pbpaste" t t)
+  (message "paste from buffer"))
 
 (defun pbcut ()
   (interactive)
   (pbcopy)
-  (delete-region (region-beginning) (region-end)))
+  (delete-region (region-beginning) (region-end))
+  (message "cut to buffer"))
 
-(global-set-key (kbd "C-c c") 'pbcopy)
-(global-set-key (kbd "C-c v") 'pbpaste)
-(global-set-key (kbd "C-c x") 'pbcut)
-
-;; some python shortcuts
 (defun python-add-breakpoint ()
   "Add a break point"
   (interactive)
@@ -71,8 +36,24 @@
 (defun annotate-pdb ()
   (interactive)
   (highlight-lines-matching-regexp "import ipdb")
-  (highlight-lines-matching-regexp "ipdb.set_trace()"))
-(add-hook 'python-mode-hook 'annotate-pdb)
+  (highlight-lines-matching-regexp "ipdb.set_trace()")
+  (highlight-lines-matching-regexp "import pdb")
+  (highlight-lines-matching-regexp "pdb.set_trace()")
+ )
+
+(defun duplicate-current-line (&optional n)
+  "duplicate current line, make more than 1 copy given a numeric argument"
+  (interactive "p")
+  (save-excursion
+    (let ((nb (or n 1))
+      (current-line (thing-at-point 'line)))
+      ;; when on last line, insert a newline first
+      (when (or (= 1 (forward-line 1)) (eq (point) (point-max)))
+    (insert "\n"))
+      ;; now insert as many time as requested
+      (while (> n 0)
+    (insert current-line)
+    (decf n)))))
 
 (defun ipdb-cleanup ()
     (interactive)
@@ -80,5 +61,41 @@
       (replace-regexp ".*ipdb.set_trace().*\n" "" nil (point-min) (point-max))
       ;; (save-buffer)
       ))
+
+;; end functions
+
+;; mark lines
+(global-set-key (kbd "C-c l") 'mc/edit-lines)
+(global-set-key (kbd "C-c .") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-c ,") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c m") 'mc/mark-all-like-this)
+;; comment/uncomment
+(global-set-key (kbd "C-c /") 'comment-or-uncomment-region)
+;; git annotate
+(global-set-key (kbd "C-C \\") 'vc-annotate)
+;; magit
+(global-set-key (kbd "C-x g") 'magit-status)
+(global-set-key (kbd "C-x M-g") 'magit-dispatch-popup)
+;; duplicate current line
+(global-set-key (kbd "C-c d") 'duplicate-current-line)
+;; copy line
+(global-set-key (kbd "C-c f") 'copy-line)
+;;neotree
+(global-set-key (kbd "C-x \\") 'neotree-toggle)
+;;bs
+(global-set-key (kbd "C-x C-]") 'bs-show)
+;;direx
+;;(global-set-key (kbd "C-x C-j") 'direx:jump-to-directory)
+;;vimish mode
+;; (global-set-key (kbd "C-x v f") #'vimish-fold)
+;; (global-set-key (kbd "C-x v v") #'vimish-fold-delete)
+
+;; buffer copy-paste 
+(global-set-key (kbd "C-c c") 'pbcopy)
+(global-set-key (kbd "C-c v") 'pbpaste)
+(global-set-key (kbd "C-c x") 'pbcut)
+
+(add-hook 'python-mode-hook 'annotate-pdb)
+(add-hook 'python-mode-hook 'ipdb-cleanup)
 
 (provide 'init_keymap)
