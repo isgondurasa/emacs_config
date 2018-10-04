@@ -1,5 +1,8 @@
 (require 'spaceline-config)
-(spaceline-spacemacs-theme)
+(require 'spaceline-all-the-icons)
+
+(spaceline-emacs-theme)
+(spaceline-all-the-icons--setup-git-ahead)
 
 
 ;; active
@@ -34,5 +37,9 @@
                     :foreground "Blue"
                     :box nil)
 
+
+
+(setq spaceline-separator-dir-left '(left . left))
+(setq spaceline-separator-dir-right '(right . right))
 
 (provide 'init_powerline)

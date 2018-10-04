@@ -7,8 +7,6 @@
 
 
 
-
-
 ;; flycheck
 
 ;;; Commentary:
@@ -18,11 +16,11 @@
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (set-face-attribute 'flycheck-error nil
                    :foreground "Black"
-                   :background "Red")
+                   :background "DarkOrange")
 
 (set-face-attribute 'flycheck-warning nil
-                   :foreground "Black"
-                   :background "Yellow")
+                   :foreground "White"
+                   :background "DarkGray")
 
 (set-face-attribute 'flycheck-info nil
                    :foreground "Black"
